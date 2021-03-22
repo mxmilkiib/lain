@@ -23,7 +23,12 @@ local function do_fair(p, orientation)
 
     if #cls == 0 then return end
 
-    -- How many vertical columns? Read from nmaster on the tag.
+    if #cls == 1 then
+      p.geometries[cls[1]] = wa
+      return
+    end
+
+     -- How many vertical columns? Read from nmaster on the tag.
     local num_x = tonumber(termfair.nmaster) or t.master_count
     local ncol  = tonumber(termfair.ncol) or t.column_count
     if num_x <= 2 then num_x = 2 end
